@@ -49,3 +49,33 @@ input {
     width: 20%;
     
 }
+
+.current-city-date {
+    display: inline-flex;
+}
+
+#current-uvi-div {
+    display: inline-flex;
+}
+
+#current-uvi-div p {
+    margin: 0;
+}
+
+.favorable {
+    background-color: green;
+    color: white;
+}
+
+.moderate {
+    background-color: yellow;
+}
+
+.severe {
+    background-color: red;
+    color: white;
+}
+
+#uvi {
+    padding: 0 10px;   
+}
