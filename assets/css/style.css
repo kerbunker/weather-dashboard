@@ -32,6 +32,19 @@ input {
     color: white;
     border-radius: 5px;
 }
+
+#search-buttons-list {
+    padding: 0;
+    margin: 0;
+}
+
+.city-search-btn {
+    width: 90%;
+    margin: 5px;
+    height: 30px;
+    padding: 0;
+    border-radius: 5px;
+}
 .weather-div {
     flex: 3 2 70%;
 }
@@ -79,3 +92,4 @@ input {
 #uvi {
     padding: 0 10px;   
 }
+

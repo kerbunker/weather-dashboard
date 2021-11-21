@@ -10,6 +10,15 @@ var getWeatherData = function(cityName) {
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
+                var cityBtnEl = document.createElement("button");
+                cityBtnEl.classList.add("city-search-btn");
+                cityBtnEl.setAttribute("id", "city-" + inputCity);
+                cityBtnEl.textContent = inputCity;
+                document.querySelector('#search-buttons-list').appendChild(cityBtnEl);
+                searchCities.push(inputCity);
+                saveCities();
+                getWeatherData(inputCity);
+
                 //console.log(data);
                 var iconCode = data.weather[0].icon;
                 //console.log(iconCode);
@@ -26,6 +35,8 @@ var getWeatherData = function(cityName) {
                 var cityLon = data.coord.lon;
                 getUV(cityLat, cityLon);
             });
+        } else {
+            alert("Could not find the city. Please try again.");
         }
     });
 
@@ -93,6 +104,35 @@ var getDailyForecast = function(data) {
 
 };
 
+var saveCities = function() {
+
+    localStorage.setItem("searchCities", JSON.stringify(searchCities));
+};
+
+var loadCities = function() {
+    debugger;
+    cities = localStorage.getItem("searchCities");
+
+    if (!cities) {
+        cities = [];
+    }
+
+    for (var i = 0; i < cities.length; i++) {
+        var cityBtnEl = document.createElement("button");
+        var inputCity = Cities[i];
+        console.log(inputCity);
+        cityBtnEl.classList.add("city-search-btn");
+        cityBtnEl.setAttribute("id", "city-" + inputCity);
+        cityBtnEl.textContent = inputCity;
+        document.querySelector('#search-buttons-list').appendChild(cityBtnEl);
+        cities.push(inputCity);
+    }
+
+    console.log(cities);
+    searchCities = cities;
+    console.log(searchCities);
+};
+
 
 var getSearchCity = function(event) {
     event.preventDefault();
@@ -113,20 +153,12 @@ var getSearchCity = function(event) {
         }
     }
     
-    if (inputCity) {
-        var cityBtnEl = document.createElement("button");
-        cityBtnEl.classList.add("city-search-btn");
-        cityBtnEl.setAttribute("id", "city-" + inputCity);
-        cityBtnEl.textContent = inputCity;
-        document.querySelector('#search-buttons-list').appendChild(cityBtnEl);
-        searchCities.push(inputCity);
-        getWeatherData(inputCity);
-    }
     
-}
+};
 
 submitBtnEl.addEventListener("click", getSearchCity);
 citySearchBtnsList.addEventListener("click", getSearchCity);
+//loadCities();
 
 //save data
 //load data
