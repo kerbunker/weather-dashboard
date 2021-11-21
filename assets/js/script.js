@@ -95,20 +95,24 @@ var getDailyForecast = function(data) {
     // sets the date for the next 5 days
     var currentDayPlusOne = new Date();
     currentDayPlusOne.setDate(currentDayPlusOne.getDate() + 1);
+    document.querySelector('#day-1-date').textContent = currentDayPlusOne.toLocaleDateString();
+    
     var currentDayPlusTwo = currentDayPlusOne;
     currentDayPlusTwo.setDate(currentDayPlusTwo.getDate() + 1);
+    document.querySelector('#day-2-date').textContent = currentDayPlusTwo.toLocaleDateString();
+    
     var currentDayPlusThree = currentDayPlusTwo;
     currentDayPlusThree.setDate(currentDayPlusThree.getDate() + 1);
-    var currentDayPlusFour = currentDayPlusThree;
-    currentDayPlusFour.setDate(currentDayPlusFour.getDate() + 1);
-    var currentDayPlusFive = currentDayPlusFour;
-    currentDayPlusFive.setDate(currentDayPlusFive.getDate() + 1);
-
-    document.querySelector('#day-1-date').textContent = currentDayPlusOne.toLocaleDateString();
-    document.querySelector('#day-2-date').textContent = currentDayPlusTwo.toLocaleDateString();
     document.querySelector('#day-3-date').textContent = currentDayPlusThree.toLocaleDateString();
+    
+    var currentDayPlusFour = currentDayPlusOne;
+    currentDayPlusFour.setDate(currentDayPlusOne.getDate() + 1);
     document.querySelector('#day-4-date').textContent = currentDayPlusFour.toLocaleDateString();
+    
+    var currentDayPlusFive = currentDayPlusOne;
+    currentDayPlusFive.setDate(currentDayPlusOne.getDate() + 1);
     document.querySelector('#day-5-date').textContent = currentDayPlusFive.toLocaleDateString();
+
 
     // for each day sets the temp, wind speed, humidity, and weather icon in the html element on the page
     for (var i = 1; i < 6; i++) {
