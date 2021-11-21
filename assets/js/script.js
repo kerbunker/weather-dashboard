@@ -12,12 +12,11 @@ var getWeatherData = function(cityName) {
             response.json().then(function(data) {
                 var cityBtnEl = document.createElement("button");
                 cityBtnEl.classList.add("city-search-btn");
-                cityBtnEl.setAttribute("id", "city-" + inputCity);
-                cityBtnEl.textContent = inputCity;
+                cityBtnEl.setAttribute("id", "city-" + cityName);
+                cityBtnEl.textContent = cityName;
                 document.querySelector('#search-buttons-list').appendChild(cityBtnEl);
-                searchCities.push(inputCity);
+                searchCities.push(cityName);
                 saveCities();
-                getWeatherData(inputCity);
 
                 //console.log(data);
                 var iconCode = data.weather[0].icon;
@@ -105,13 +104,11 @@ var getDailyForecast = function(data) {
 };
 
 var saveCities = function() {
-
     localStorage.setItem("searchCities", JSON.stringify(searchCities));
 };
 
 var loadCities = function() {
-    debugger;
-    cities = localStorage.getItem("searchCities");
+    var cities = JSON.parse(localStorage.getItem("searchCities"));
 
     if (!cities) {
         cities = [];
@@ -119,13 +116,12 @@ var loadCities = function() {
 
     for (var i = 0; i < cities.length; i++) {
         var cityBtnEl = document.createElement("button");
-        var inputCity = Cities[i];
+        var inputCity = cities[i];
         console.log(inputCity);
         cityBtnEl.classList.add("city-search-btn");
         cityBtnEl.setAttribute("id", "city-" + inputCity);
         cityBtnEl.textContent = inputCity;
         document.querySelector('#search-buttons-list').appendChild(cityBtnEl);
-        cities.push(inputCity);
     }
 
     console.log(cities);
@@ -136,31 +132,24 @@ var loadCities = function() {
 
 var getSearchCity = function(event) {
     event.preventDefault();
-    //console.log("function reached");
     var inputCity;
     if (event.target.classList.contains("submit-btn")) {
-        inputCity = document.querySelector("#city-search").value;
-        //console.log(inputCity);
+        var inputEl = document.querySelector('#city-search');
+        inputCity = inputEl.value;
+        inputEl.value = "";
     } else {
         inputCity = event.target.textContent;
-        console.log(inputCity);
         document.querySelector('#city-' + inputCity).remove();
     }
-    if(searchCities) {
-        var index = searchCities.indexOf(inputCity);
-        if (index > -1) {
-            searchCities.splice(index, 1);
-        }
-    }
     
+    getWeatherData(inputCity);
     
 };
 
 submitBtnEl.addEventListener("click", getSearchCity);
 citySearchBtnsList.addEventListener("click", getSearchCity);
-//loadCities();
+loadCities();
 
-//save data
-//load data
+
 //add comments
 //README
