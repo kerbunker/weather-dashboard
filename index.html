@@ -5,17 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!--<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">-->
-  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">-->
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Weather Dashboard</title>
 </head>
 
 <body>
+    <!-- Heading Section -->
     <header class="title-bar">
         <h1> Weather Dashboard</h1>
     </header>
+    <!-- End Heading -->
+    <!-- Main Section -->
     <main>
+        <!-- City Search Section -->
         <section class="city-div">
             <div class="city-search-form">
                 <h2 class="section-title">Search for a City:</h2>
@@ -25,12 +27,17 @@
                 </form>
             </div>
             
+            <!-- Previous City Search Buttons-->
             <div class="city-buttons">
                 <ul id="search-buttons-list"></ul>
             </div>
 
         </section>
+        <!-- End City Search Section -->
+
+        <!-- Weather Section -->
         <section class="weather-div">
+            <!-- Current Weather Section -->
             <div class="current-weather">
                 <div class="current-city-date">
                     <h2 id="city-date"></h2><img id="wicon" src="" alt="Weather icon" style="display: none;">
@@ -45,6 +52,9 @@
                 </div>
                 
             </div>
+            <!-- End Current Weather Section -->
+
+            <!-- Daily Forecast Section-->
             <div class="five-day-forecast">
                 <h3>5-Day Forecast</h3>
                 <div class="daily-forecast">
@@ -84,10 +94,16 @@
                         <p id="day-5-humidity">Humidity:</p>
                     </div>
                 </div>
+                
             </div>
+            <!-- End Daily Forecast Section -->
         </section>
+        <!-- End Weather Section-->
 
     </main>
+    <!-- End Main Section-->
+
+    <!-- Script files Section -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>

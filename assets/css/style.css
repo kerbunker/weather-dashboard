@@ -1,3 +1,4 @@
+/* Header Styles */
 .title-bar {
     background: rgb(85,133,241);
     background: linear-gradient(90deg, rgba(85,133,241,1) 0%, rgba(38,0,83,1) 100%);
@@ -8,9 +9,12 @@
     text-align: center;
 }
 
+/* Main Section Styles */
 main {
     display: flex;
 }
+
+/* City Search Section Styles */
 .city-div {
     flex: 1 1 20%;
 }
@@ -54,6 +58,9 @@ input {
     padding: 0;
     border-radius: 5px;
 }
+/* End City Search Section */
+
+/* Weather Styles */
 .weather-div {
     flex: 3 2 70%;
     padding: 20px;
@@ -107,4 +114,6 @@ input {
 #uvi {
     padding: 0 10px;   
 }
+/* End Weather Styles */
+/* End Main Section Styles */
 
