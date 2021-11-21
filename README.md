@@ -28,4 +28,4 @@ Though this site is currently functional, there are some features I would like t
 
 * Deployed Site: [https://kerbunker.github.io/weather-dashboard/](https://kerbunker.github.io/weather-dashboard/)
 
-![weather dashboard with the current weather for Durham](./assets/images/site-screenshot.PNG)
+![weather dashboard with the current weather for Durham](./assets/images/page-screenshot.PNG)
