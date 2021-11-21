@@ -18,11 +18,8 @@ var getWeatherData = function(cityName) {
                 searchCities.push(cityName);
                 saveCities();
 
-                //console.log(data);
                 var iconCode = data.weather[0].icon;
-                //console.log(iconCode);
                 var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-                //console.log(iconUrl);
                 var weatherIconEl = document.querySelector('#wicon');
                 currentCityDate.textContent = cityName + " (" + currentDate + ")";
                 weatherIconEl.setAttribute("src", iconUrl);
@@ -42,7 +39,6 @@ var getWeatherData = function(cityName) {
 };
 
 var getUV = function(lat, lon) {
-    console.log(lat + " " + lon);
     var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&units=imperial&appid=03bb68255464b077b300ee6581abfffb';
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
@@ -65,21 +61,15 @@ var getUV = function(lat, lon) {
 
 var getDailyForecast = function(data) {
     var currentDayPlusOne = new Date();
-    //console.log(currentDayPlusOne.toLocaleDateString());
     currentDayPlusOne.setDate(currentDayPlusOne.getDate() + 1);
-    //console.log(currentDayPlusOne.toLocaleDateString());
     var currentDayPlusTwo = currentDayPlusOne;
     currentDayPlusTwo.setDate(currentDayPlusTwo.getDate() + 1);
-    //console.log(currentDayPlusTwo.toLocaleDateString());
     var currentDayPlusThree = currentDayPlusTwo;
     currentDayPlusThree.setDate(currentDayPlusThree.getDate() + 1);
-    //console.log(currentDayPlusThree.toLocaleDateString());
     var currentDayPlusFour = currentDayPlusThree;
     currentDayPlusFour.setDate(currentDayPlusFour.getDate() + 1);
-    //console.log(currentDayPlusFour.toLocaleDateString());
     var currentDayPlusFive = currentDayPlusFour;
     currentDayPlusFive.setDate(currentDayPlusFive.getDate() + 1);
-    //console.log(currentDayPlusFive.toLocaleDateString());
 
     document.querySelector('#day-1-date').textContent = currentDayPlusOne.toLocaleDateString();
     document.querySelector('#day-2-date').textContent = currentDayPlusTwo.toLocaleDateString();
@@ -87,15 +77,12 @@ var getDailyForecast = function(data) {
     document.querySelector('#day-4-date').textContent = currentDayPlusFour.toLocaleDateString();
     document.querySelector('#day-5-date').textContent = currentDayPlusFive.toLocaleDateString();
 
-    //console.log(data);
     for (var i = 1; i < 6; i++) {
         document.querySelector('#day-'+ i + '-temp').textContent = "Temp: " + data.daily[i].temp.max;
         document.querySelector('#day-'+ i + '-wind').textContent = "Wind: " + data.daily[i].wind_gust + " MPH";
         document.querySelector('#day-'+ i + '-humidity').textContent = "Humidity: " + data.daily[i].humidity + " %";
         var iconCode = data.daily[i].weather[0].icon;
-        //console.log(iconCode);
         var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-        //console.log(iconUrl);
         var weatherIconEl = document.querySelector('#wicon-' + i);
         weatherIconEl.setAttribute("src", iconUrl);
         weatherIconEl.setAttribute("style", "display: block");
@@ -117,16 +104,13 @@ var loadCities = function() {
     for (var i = 0; i < cities.length; i++) {
         var cityBtnEl = document.createElement("button");
         var inputCity = cities[i];
-        console.log(inputCity);
         cityBtnEl.classList.add("city-search-btn");
         cityBtnEl.setAttribute("id", "city-" + inputCity);
         cityBtnEl.textContent = inputCity;
         document.querySelector('#search-buttons-list').appendChild(cityBtnEl);
     }
 
-    console.log(cities);
     searchCities = cities;
-    console.log(searchCities);
 };
 
 
@@ -152,4 +136,3 @@ loadCities();
 
 
 //add comments
-//README

@@ -15,8 +15,17 @@ main {
     flex: 1 1 20%;
 }
 
+.city-search-form {
+    border-bottom: black 2px solid;
+    padding: 10px;
+}
+
+.city-search-form h2 {
+    margin-top: 5px;
+}
+
 input {
-    width: 90%;
+    width: 95%;
     margin: 5px;
     height: 30px;
     padding: 0;
@@ -24,7 +33,7 @@ input {
 }
 
 .submit-btn {
-    width: 90%;
+    width: 95%;
     margin: 5px;
     height: 30px;
     padding: 0;
@@ -34,12 +43,12 @@ input {
 }
 
 #search-buttons-list {
-    padding: 0;
+    padding: 10px;
     margin: 0;
 }
 
 .city-search-btn {
-    width: 90%;
+    width: 95%;
     margin: 5px;
     height: 30px;
     padding: 0;
@@ -47,6 +56,12 @@ input {
 }
 .weather-div {
     flex: 3 2 70%;
+    padding: 20px;
+}
+
+.current-weather {
+    border: black 2px solid;
+    padding: 5px;
 }
 .daily-forecast {
     display: flex;
